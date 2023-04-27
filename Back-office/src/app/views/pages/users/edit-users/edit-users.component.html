@@ -1,0 +1,30 @@
+<mat-toolbar>
+    <span>
+    Update Account
+      </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <form [formGroup]="accountservice.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="1" rowHeight="220px">
+      <mat-grid-tile>
+        <div class="controles-container">
+            <select class="form-control" name="role" id="roles-select" (change)="onChangeRole($event)" >
+              
+              <option >admin</option>
+              <option>user</option>
+            </select>
+            <br>
+          <div class="button-row">
+              <button mat-raised-button color="primary" type="submit" >
+               <mat-icon>save</mat-icon> Save
+              </button>
+              <button mat-raised-button mat-dialog-close> <mat-icon>close</mat-icon>Cancel</button>
+        </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>

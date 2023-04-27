@@ -1,0 +1,46 @@
+<mat-toolbar>
+  <span>{{ productService.form.controls['productId'].value? "Modify Product ":" Add Product" }}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()"
+    tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<br><br>
+<div class="card">
+<br><br>
+  <div class="container">
+    <form [formGroup]="productService.form" class="normal-form" (submit)="onSubmit()" class="normal-form">
+      <mat-form-field appearance="outline">
+        <mat-label> Product Name * </mat-label>
+        <input matInput formControlName="productName">
+        <mat-error *ngIf="productService.form.controls['productName'].errors?.required">this field is mandatory.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-left: 3px;">
+        <mat-label> Product Version *</mat-label>
+        <input matInput formControlName="productVersion">
+        <mat-error *ngIf="productService.form.controls['productVersion'].errors?.required">this field is
+          mandatory.
+        </mat-error>
+      </mat-form-field>
+      <div class="form-group">
+        <label> Description * </label>
+        <ckeditor style=" margin-right: 30px;" formControlName="description" class="w-10 col-12" [config]='config'>
+        </ckeditor>
+      </div>
+      <div style=" margin-right: 30px;">
+        <mat-checkbox  color="primary">Enabled Product</mat-checkbox>
+      </div><br>
+      <div class="form-group">
+        <input type="file" color="primary" (change)="onSelectFile($event)"
+          [type]="productService.form.controls['productId'].value? 'hidden' : 'file'">
+      </div><br>&nbsp;&nbsp;
+      <div class="controle-container">&nbsp;&nbsp;
+        <button mat-raised-button color="primary" [disabled]="productService.form.invalid" class="float-right"
+          type="submit"><mat-icon>save</mat-icon> Save
+        </button>&nbsp;
+        <button mat-raised-button mat-dialog-close> <mat-icon>close</mat-icon>Cancel</button>
+        <br><br>
+      </div>
+    </form>
+  </div>
+</div>

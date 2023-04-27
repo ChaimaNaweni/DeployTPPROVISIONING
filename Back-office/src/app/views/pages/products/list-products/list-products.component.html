@@ -1,0 +1,30 @@
+<br><br><br>
+<button class="float-right" mat-fab color="primary" (click)=" onCreateproduct()">
+  <mat-icon>add</mat-icon>
+</button>&nbsp;&nbsp;
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-3" *ngFor="let product of listPrducts">
+      <div class="card">
+        <div class="wrapper">
+          <img class="card-img-top img-fluid" class="card-img-top" src="{{product.logo}}">
+        </div><br>
+        <div class="card-body">
+          <span color="gray"> <b></b>{{product.productName}}</span><br>
+          <span class="nav-label"> <b> Created Date </b> {{product.createdDate | date:'short' }} </span><br>
+          <span class="nav-label"> <b> version </b> {{product.productVersion }} </span><br>
+          <div><br>
+            <div class="float-right">
+              <button mat-icon-button (click)="onEditproduct(product)"><mat-icon>edit_outline</mat-icon></button>&nbsp;
+              <button mat-icon-button><mat-icon color="warn"
+                  (click)="onDeleteProduct(product.productId)">close</mat-icon>
+              </button>
+            </div>
+          </div>
+        <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
